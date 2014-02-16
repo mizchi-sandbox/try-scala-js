@@ -1,0 +1,20 @@
+{
+  "name": "scjs2",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sjrd/scala-js-example-app",
+  "authors": [
+    "Koutarou Chikuba <miz404@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "vue": "~0.8.6"
+  }
+}
