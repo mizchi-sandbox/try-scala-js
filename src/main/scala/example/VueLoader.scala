@@ -1,27 +1,30 @@
 package main.scala.example
-
 import scala.scalajs.js
 import scalatags.all._
-
 import js.Dynamic.{
   newInstance,
-  global => g,
-  literal => O
+  global,
+  literal
 }
 
-object ComponentLoader {
-  val component = g.Vue.extend(
-    O()
-  )
+trait Schema extends js.Object{}
+
+object VueLoader {
+  // itniailize with template string and interface
   def createVue[T](str:String): Vue[T] =
-    newInstance(component)(
-      O(template = str)
+    newInstance(global.Vue)(
+      literal(template = str)
     ).asInstanceOf[Vue[T]]
+
+  // initialize with options
+  def createVue[T](options: js.Object): Vue[T] =
+    newInstance(global.Vue)(options).asInstanceOf[Vue[T]]
 }
 
 trait Vue[T] extends js.Object{
   def el: js.Any = ???
   def $el: js.Any = ???
+  def $: js.Any = ???
   def $data: T = ???
   def $methods: js.Object = ???
 
@@ -42,4 +45,4 @@ trait Vue[T] extends js.Object{
   def $off(event: String): js.Any = ???
   def $off(event: String, callback: js.Function): js.Any = ???
 }
-trait Schema extends js.Object{}
+
